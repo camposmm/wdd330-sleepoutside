@@ -1,4 +1,5 @@
-import { setLocalStorage } from './utils.mjs';
+// src/js/ProductDetails.mjs
+import { setLocalStorage, getParam } from './utils.mjs';
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -20,19 +21,11 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    // Get DOM elements
-    const title = document.querySelector('.product-detail__title');
-    const brand = document.querySelector('.product-detail__brand');
-    const price = document.querySelector('.product-detail__price');
-    const image = document.querySelector('.product-detail__image');
-    const description = document.querySelector('.product-detail__description');
-
-    // Populate with product data
-    title.textContent = this.product.Name;
-    brand.textContent = this.product.Brand;
-    price.textContent = `$${this.product.FinalPrice}`;
-    image.src = this.product.Image;
-    image.alt = this.product.Name;
-    description.textContent = this.product.Description;
+    // Populate the page with product details
+    document.querySelector('.product-detail__name').textContent = this.product.Name;
+    document.querySelector('.product-detail__price').textContent = `$${this.product.FinalPrice}`;
+    document.querySelector('.product__image').src = this.product.Images.PrimaryMedium;
+    document.querySelector('.product__image').alt = this.product.Name;
+    document.querySelector('.product__description').textContent = this.product.Description;
   }
 }
